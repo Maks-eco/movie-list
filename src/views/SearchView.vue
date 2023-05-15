@@ -25,6 +25,6 @@ const searchFilmName = async (value: string) => {
 <template>
   <main>
     <SearchBar @search="searchFilmName" />
-    <MoviesList :movies="movies" />
+    <MoviesList :movies="movies" listType="search" />
   </main>
 </template>
