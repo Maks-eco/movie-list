@@ -23,6 +23,7 @@ const initLS = () => {
 };
 initLS();
 console.log(locStorage.getData("personalMovieList"));
+console.log(import.meta.env.VITE_MOVIE_KINOPOISK_TOKEN);
 
 export const useMoviesStore = defineStore("movies", () => {
   const movies = ref(locStorage.getData("lastSearchMovies") as Movie[] | null);
@@ -34,10 +35,10 @@ export const useMoviesStore = defineStore("movies", () => {
     headers: {
       accept: "application/json",
       "X-API-KEY": import.meta.env.VITE_MOVIE_KINOPOISK_TOKEN,
-      Cookie: "SameSite=None; Secure",
+      // Cookie: "SameSite=None; Secure",
     },
   };
-  // console.log();
+  // console.log("ы");
 
   const alreadyAddedToPersonal = (movies: Movie[]): Movie[] => {
     return movies.map((element) => {
@@ -77,7 +78,7 @@ export const useMoviesStore = defineStore("movies", () => {
   const addToPersonalList = (movie: Movie) => {
     // const movieArr: Movie[] = locStorage.getData("personalMovieList");
     if (personalList?.value) {
-      personalList.value.push(movie);
+      personalList.value.unshift(movie);
       if (movies?.value) {
         // movies.value = alreadyAddedToPersonal(movies.value);
         locStorage.saveData("lastSearchMovies", movies.value);
@@ -101,11 +102,24 @@ export const useMoviesStore = defineStore("movies", () => {
     return null;
   };
 
+  const updatePersonalList = (movie: Movie) => {
+    if (personalList?.value) {
+      // const filtere personalList.value.push(movie);
+      personalList.value = personalList.value.map((item) =>
+        item.id === movie.id ? movie : item
+      );
+      locStorage.saveData("personalMovieList", personalList.value);
+      return personalList.value;
+    }
+    return null;
+  };
+
   return {
     movies,
     personalList,
     getDataKinopoiskSearch,
     addToPersonalList,
     deleteFromPersonalList,
+    updatePersonalList,
   };
 });

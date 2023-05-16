@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
-import MoviesList from "@/components/MoviesList.vue";
+import SearchMovieList from "@/components/SearchMovieList.vue";
 import { ref, watch } from "vue";
 import { useMoviesStore } from "@/stores/counter";
 // defineProps<{
@@ -25,6 +25,6 @@ const searchFilmName = async (value: string) => {
 <template>
   <main>
     <SearchBar @search="searchFilmName" />
-    <MoviesList :movies="movies" listType="search" />
+    <SearchMovieList :movies="movies" />
   </main>
 </template>

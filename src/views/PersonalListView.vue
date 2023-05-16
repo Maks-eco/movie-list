@@ -2,11 +2,11 @@
   <!-- <div class="about">
     <h1>This is an about page</h1>
   </div> -->
-  <MoviesList :movies="movies" listType="recomm" />
+  <PersonalMovieList :movies="movies" />
 </template>
 
 <script setup lang="ts">
-import MoviesList from "@/components/MoviesList.vue";
+import PersonalMovieList from "@/components/PersonalMovieList.vue";
 import { ref } from "vue";
 import { useMoviesStore } from "@/stores/counter";
 import type Movie from "@/types/Movie";
