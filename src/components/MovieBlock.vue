@@ -24,7 +24,8 @@ const props = defineProps<{
 
 <template>
   <!-- <div class="movie-list" v-for="movie in movieList" :key="movie.id"> -->
-    <img class="preview-img" alt="category" :src="movie.poster?.previewUrl" />
+    <img class="preview-img" alt="category" 
+    :src="movie.poster?.previewUrl" />
     <div>
       <p>
         {{ movie.name }} 
