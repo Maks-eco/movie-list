@@ -1,7 +1,4 @@
 <template>
-  <!-- <div class="about">
-    <h1>This is an about page</h1>
-  </div> -->
   <PersonalMovieList :movies="movies" />
 </template>
 
@@ -13,8 +10,6 @@ import type Movie from "@/types/Movie";
 
 const store = useMoviesStore();
 const movies = ref(store.personalList as Movie[] | null);
-// const movies = ref(null as Movie[] | null);
-// movies.value = store.personalList;
 </script>
 
 <style>

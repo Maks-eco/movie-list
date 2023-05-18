@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-// const props = defineProps(["modelValue"]);
-// defineEmits(["search"]);
 defineEmits<{
   (e: "search", value: string): void;
 }>();
@@ -12,7 +10,7 @@ const variabl = ref("" as string);
   <div class="search-field">
     <input class="name-input" type="text" v-model="variabl" />
     <button class="accept-button" @click="$emit('search', variabl)">
-      Жмакай
+      Поиск
     </button>
   </div>
 </template>
